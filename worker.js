@@ -5,33 +5,33 @@ import fs from 'fs';
 import path from 'path';
 import dbClient from './utils/db.js';
 
-const fileQueue = new Bull('fileQueue');
+const productQueue = new Bull('productQueue');
 
-fileQueue.process(async (job) => {
-  const { userId, fileId } = job.data;
+productQueue.process(async (job) => {
+  const { userId, productId } = job.data;
 
-  if (!fileId) {
-    throw new Error('Missing fileId');
+  if (!productId) {
+    throw new Error('Missing productId');
   }
 
   if (!userId) {
     throw new Error('Missing userId');
   }
 
-  const filesCollection = dbClient.db.collection('files');
-  const file = await filesCollection.findOne({ _id: new dbClient.ObjectId(fileId), userId: new dbClient.ObjectId(userId) });
+  const productsCollection = dbClient.db.collection('products');
+  const product = await productsCollection.findOne({ _id: new dbClient.ObjectId(productId), userId: new dbClient.ObjectId(userId) });
 
-  if (!file) {
-    throw new Error('File not found');
+  if (!product) {
+    throw new Error('product not found');
   }
 
   const sizes = [500, 250, 100];
   const options = { responseType: 'buffer' };
 
   for (const size of sizes) {
-    const thumbnail = await imageThumbnail(file.localPath, { ...options, width: size });
-    const thumbnailPath = `${file.localPath}_${size}`;
-    fs.writeFileSync(thumbnailPath, thumbnail);
+    const thumbnail = await imageThumbnail(product.localPath, { ...options, width: size });
+    const thumbnailPath = `${product.localPath}_${size}`;
+    fs.writeproductSync(thumbnailPath, thumbnail);
   }
 });
 
