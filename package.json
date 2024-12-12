@@ -1,0 +1,28 @@
+{
+  "name": "centa-product-service",
+  "version": "1.0.0",
+  "description": "Centa is an inventory management system.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Josiah-praise/centa-product-service.git"
+  },
+  "keywords": [],
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Josiah-praise/centa-product-service/issues"
+  },
+  "homepage": "https://github.com/Josiah-praise/centa-product-service#readme",
+  "dependencies": {
+    "@prisma/client": "^6.0.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "nodemon": "^3.1.7",
+    "winston": "^3.17.0"
+  }
+}
