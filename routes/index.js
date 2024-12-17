@@ -13,11 +13,11 @@ router.post('/users', UsersController.postNew);
 router.get('/connect', AuthController.getConnect);
 router.get('/disconnect', AuthController.getDisconnect);
 router.get('/users/me', UsersController.getMe);
-router.post('/files', ProductsController.postUpload);
-router.get('/files/:id', ProductsController.getShow);
-router.get('/files', ProductsController.getIndex);
-router.put('/files/:id/publish', ProductsController.putPublish);
-router.put('/files/:id/unpublish', ProductsController.putUnpublish);
-router.get('/files/:id/data', ProductsController.getFile);
+router.post('/products', ProductsController.postUpload);
+router.get('/products/:id', ProductsController.getShow);
+router.get('/products', ProductsController.getIndex);
+router.put('/products/:id/delete', ProductsController.putDelete);
+router.put('/products/:id/restore', ProductsController.putRestore);
+router.get('/products/:id/update', ProductsController.updatePut);
 
 export default router;
