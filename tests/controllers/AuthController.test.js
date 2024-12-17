@@ -2,7 +2,7 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import { describe, it, before, after } from 'mocha';
-import app from '../server'; // Assuming your Express app is exported from server.js
+import app from '../server';
 import dbClient from '../utils/db';
 import redisClient from '../utils/redis';
 
