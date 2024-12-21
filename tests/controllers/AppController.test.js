@@ -19,7 +19,7 @@ describe('AppController', () => {
   after(async () => {
     // Clean up the database and Redis
     await dbClient.db.collection('users').deleteMany({});
-    await dbClient.db.collection('files').deleteMany({});
+    await dbClient.db.collection('products').deleteMany({});
     await redisClient.del('test_key');
   });
 
@@ -34,12 +34,12 @@ describe('AppController', () => {
   });
 
   describe('GET /stats', () => {
-    it('should return the number of users and files', async () => {
+    it('should return the number of users and products', async () => {
       const res = await chai.request(app)
         .get('/stats');
       expect(res).to.have.status(200);
       expect(res.body).to.have.property('users', 1);
-      expect(res.body).to.have.property('files', 0);
+      expect(res.body).to.have.property('products', 0);
     });
   });
 });
