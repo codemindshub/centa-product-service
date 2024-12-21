@@ -14,7 +14,7 @@ describe('dbClient', () => {
   after(async () => {
     // Clean up the database after tests
     await dbClient.client.query('DELETE FROM users');
-    await dbClient.client.query('DELETE FROM files');
+    await dbClient.client.query('DELETE FROM products');
     await dbClient.client.end();
   });
 
@@ -38,15 +38,15 @@ describe('dbClient', () => {
     });
   });
 
-  describe('nbFiles', () => {
-    it('should return 0 when there are no files', async () => {
-      const count = await dbClient.nbFiles();
+  describe('nbProducts', () => {
+    it('should return 0 when there are no products', async () => {
+      const count = await dbClient.nbProducts();
       expect(count).to.equal(0);
     });
 
-    it('should return the correct number of files', async () => {
-      await dbClient.client.query("INSERT INTO files (name, type, userId) VALUES ('testfile.txt', 'file', 1)");
-      const count = await dbClient.nbFiles();
+    it('should return the correct number of products', async () => {
+      await dbClient.client.query("INSERT INTO products (name, type, userId) VALUES ('testproducts.txt', 'products', 1)");
+      const count = await dbClient.nbProducts();
       expect(count).to.equal(1);
     });
   });
