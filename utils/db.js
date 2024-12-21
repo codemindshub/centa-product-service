@@ -45,12 +45,12 @@ class DBClient {
     }
   }
 
-  async nbFiles() {
+  async nbProducts() {
     try {
-      const res = await this.client.query('SELECT COUNT(*) FROM files');
+      const res = await this.client.query('SELECT COUNT(*) FROM products');
       return parseInt(res.rows[0].count, 10);
     } catch (err) {
-      console.error('PostgreSQL nbFiles error:', err);
+      console.error('PostgreSQL nbProducts error:', err);
       return 0;
     }
   }
