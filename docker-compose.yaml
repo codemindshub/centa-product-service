@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  cache:
+    image: redis:8.0-M02-alpine
+    ports:
+      - 6379:6379 # redis default port
+    container_name: Centa_cache
+    restart: always
+  
+  db:
+    image: postgres:alpine
+    ports:
+      - 5432:5432 # postgres default port
+    container_name: Centa_db
+    environment:
+      - POSTGRES_PASSWORD=Godsgrace123
+      - POSTGRES_USER=centa
+      - POSTGRES_DB=centa_database
+    restart: always 
